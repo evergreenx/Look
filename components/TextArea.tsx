@@ -6,7 +6,7 @@ const TextArea = () => {
 
   const pasteFromClipboard = () => {
     navigator.clipboard.readText().then((text) => {
-      setValue(text);
+      return setValue(value + text);
     });
   };
 
