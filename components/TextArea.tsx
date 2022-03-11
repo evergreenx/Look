@@ -19,7 +19,7 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
 
   const options = {
     method: "POST",
-    url: "https://microsoft-translator-text.p.rapidapi.com/translate",
+    url: process.env.NEXT_PUBLIC_URL,
     params: {
       from: fromLanguage,
       to: toLanguage,
@@ -29,7 +29,7 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
     },
     headers: {
       "content-type": "application/json",
-      "x-rapidapi-host": process.env.NEXT_PUBLIC_URL,
+      "x-rapidapi-host": process.env.NEXT_PUBLIC_TRANSLATOR_HOST,
       "x-rapidapi-key": process.env.NEXT_PUBLIC_APIKEY,
     },
     data: [
@@ -101,7 +101,7 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
               // }}
               disabled
               cols={35}
-              placeholder="Translating.../"
+              placeholder="Translating...."
             ></textarea>
 
             {isFetching && <div className="text-blue-600">Loading...</div>}
@@ -120,12 +120,6 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  console.log(process.env.DB_PASS, "test");
 
-  return {
-    props: {},
-  };
-};
 
 export default TextArea;

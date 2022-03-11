@@ -12,8 +12,8 @@ const Home: NextPage = () => {
 
 
   return (
-    <div className="flex flex-col justify-center items-center px-5  ">
-      <div className="select__languge flex  py-8 items-center space-x-6 ">
+    <div className="flex flex-col  justify-center items-center px-5  ">
+      <div className="select__languge flex lg:flex-row flex-col  py-8 items-center lg:space-x-6 ">
         <div className="select__languge__from">
           <select
             value={fromLanguage}
