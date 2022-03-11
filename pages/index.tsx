@@ -48,7 +48,7 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <TextArea />
+      <TextArea toLanguage={toLanguage} fromLanguage={fromLanguage} />
     </div>
   );
 };
