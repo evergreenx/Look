@@ -8,8 +8,13 @@ import TextArea from "../components/TextArea";
 import { CustomSelectStyles } from "./CustomSelectStyles";
 
 const Home: NextPage = () => {
-  const [fromLanguage, setFromLanguage] = useState("en");
-  const [toLanguage, setToLanguage] = useState("es");
+  const [fromLanguage, setFromLanguage] = useState({
+    name: "English",
+    code: "en",
+  });
+  const [toLanguage, setToLanguage] = useState([
+    { name: "French", code: "fr" },
+  ]);
 
   return (
     <div className="flex flex-col  justify-center items-center px-5  ">
@@ -21,7 +26,8 @@ const Home: NextPage = () => {
             // @ts-ignore
 
             styles={CustomSelectStyles}
-            // defaultInputValue={'English'}
+            // defaultInputValue={fromLanguage.name}
+       
             value={fromLanguage}
             closeMenuOnSelect={true}
             className="bg-white  text-sm border-2 font-extrabold lg:text-xl border-fuchsia-800 appearance-none focus:outline-none focus:border-blue-500 "
@@ -29,7 +35,7 @@ const Home: NextPage = () => {
               DropdownIndicator: () => null,
               IndicatorSeparator: () => null,
             }}
-            getOptionValue={(option: any) => option.code}
+            getOptionValue={(option: any) => option.name}
             // @ts-expect-error
 
             getOptionLabel={(option: any) => (
@@ -46,17 +52,31 @@ const Home: NextPage = () => {
           <HiSwitchHorizontal className="text-3xl text-[#454545] cursor-pointer" />
         </div>
         <div className="select__languge__to">
-          <select
+          <Select
+            // @ts-ignore
+            options={Lang}
+            // @ts-ignore
+
+            styles={CustomSelectStyles}
+            // defaultInputValue={Lang.slice(1).map((item) => item.name)}
             value={toLanguage}
-            onChange={(event) => setToLanguage(event.target.value)}
-            className="bg-white border-2 font-extrabold text-sm lg:text-xl border-fuchsia-500 appearance-none focus:outline-none focus:border-blue-500  px-2 py-2  rounded-full shadow-md"
-          >
-            {Lang.map((item) => (
-              <option key={item.code} value={item.code}>
-                {item.name}
-              </option>
-            ))}
-          </select>
+            closeMenuOnSelect={true}
+            className="bg-white  text-sm border-2 font-extrabold lg:text-xl border-fuchsia-800 appearance-none focus:outline-none focus:border-blue-500 "
+            components={{
+              DropdownIndicator: () => null,
+              IndicatorSeparator: () => null,
+            }}
+            getOptionValue={(option: any) => option.name}
+            // @ts-expect-error
+
+            getOptionLabel={(option: any) => (
+              <div className="capitalize font-bold text-black truncate">
+                {option.name}
+              </div>
+            )}
+            isSearchable={true}
+            onChange={(option: any) => setToLanguage(option)}
+          />
         </div>
       </div>
 
