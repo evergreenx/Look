@@ -5,7 +5,7 @@ import Lang from "../Data/language.json";
 import { HiSwitchHorizontal } from "react-icons/hi";
 import Select from "react-select";
 import TextArea from "../components/TextArea";
-import { CustomSelectStyles } from "./CustomSelectStyles";
+import { CustomSelectStyles } from "../components/CustomSelectStyles";
 
 const Home: NextPage = () => {
   const [fromLanguage, setFromLanguage] = useState({
@@ -26,8 +26,6 @@ const Home: NextPage = () => {
             // @ts-ignore
 
             styles={CustomSelectStyles}
-            // defaultInputValue={fromLanguage.name}
-       
             value={fromLanguage}
             closeMenuOnSelect={true}
             className="bg-white  text-sm border-2 font-extrabold lg:text-xl border-fuchsia-800 appearance-none focus:outline-none focus:border-blue-500 "
@@ -58,7 +56,6 @@ const Home: NextPage = () => {
             // @ts-ignore
 
             styles={CustomSelectStyles}
-            // defaultInputValue={Lang.slice(1).map((item) => item.name)}
             value={toLanguage}
             closeMenuOnSelect={true}
             className="bg-white  text-sm border-2 font-extrabold lg:text-xl border-fuchsia-800 appearance-none focus:outline-none focus:border-blue-500 "
