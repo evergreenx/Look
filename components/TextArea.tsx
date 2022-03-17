@@ -17,11 +17,13 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
     });
   };
 
+ 
+
   const options = {
     method: "POST",
     url: process.env.NEXT_PUBLIC_URL,
     params: {
-      from: fromLanguage,
+      from: fromLanguage.code,
       to: toLanguage,
       "api-version": "3.0",
       profanityAction: "NoAction",
@@ -77,11 +79,9 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
           className=" self-start pt-1"
           onClick={() => setIsActive(!isActive)}
         >
-          <FiMic className="text-xl text-[#BBBBBB] cursor-pointer" />
+          <FiMic className="text-xl text-[#5c5a5a] cursor-not-allowed" />
         </div>
       </div>
-      {/* 
-      {isActive && alert("feature not shipped yet")} */}
 
       {
         // @ts-ignore
@@ -119,7 +119,5 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
     </>
   );
 };
-
-
 
 export default TextArea;
