@@ -9,11 +9,23 @@ import {
   QueryClientProvider,
 } from 'react-query'
 
+import Script from 'next/script'
+
 
 const queryClient = new QueryClient()
 function MyApp({ Component, pageProps }: AppProps) {
   return(
     <>
+ 
+<Script strategy="lazyOnload" async src={"https://www.googletagmanager.com/gtag/js?id=G-H7FTYSTRS2"}/>
+<Script strategy="lazyOnload">
+  {` window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H7FTYSTRS2');`}
+ 
+</Script>
        <QueryClientProvider client={queryClient}>
       <Header />
     <Component {...pageProps} />
