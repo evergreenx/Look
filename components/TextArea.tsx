@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FiMic } from "react-icons/fi";
 import { BsKeyboard } from "react-icons/bs";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { IoCopyOutline } from "react-icons/io5";
 import { useQuery } from "react-query";
 
@@ -20,13 +20,13 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
     navigator.clipboard.writeText(translatedText);
   };
 
-  const options = {
+  const options : AxiosRequestConfig<any> = {
     method: "POST",
     url: process.env.NEXT_PUBLIC_URL,
     headers: {
       "content-type": "application/json",
-      "x-rapidapi-host": process.env.NEXT_PUBLIC_TRANSLATOR_HOST,
-      "x-rapidapi-key": process.env.NEXT_PUBLIC_APIKEY,
+      "x-rapidapi-host": process.env.NEXT_PUBLIC_TRANSLATOR_HOST || '',
+      "x-rapidapi-key": process.env.NEXT_PUBLIC_APIKEY || '',
     },
     data: `{"text":"${value}","source":"${fromLanguage.code}","target":"${toLanguage.code}"}`,
   };
