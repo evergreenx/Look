@@ -1,7 +1,7 @@
 import React from "react";
-import { StylesConfig } from "react-select";
 
-export const CustomSelectStyles: StylesConfig = {
+
+export const CustomSelectStyles = {
   container: (provided) => ({
     ...provided,
 
