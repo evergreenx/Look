@@ -78,7 +78,12 @@ const Home: NextPage = () => {
         </div>
       </div>
 
+      <div className="px-5">
+
       <TextArea toLanguage={toLanguage} fromLanguage={fromLanguage} />
+
+      </div>
+
 
 
       <Footer />
