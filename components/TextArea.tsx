@@ -23,32 +23,22 @@ const TextArea = ({ toLanguage, fromLanguage }: any) => {
   const options = {
     method: "POST",
     url: process.env.NEXT_PUBLIC_URL,
-    params: {
-      from: fromLanguage.code || "en",
-      to: toLanguage.code || "fr",
-      "api-version": "3.0",
-      profanityAction: "NoAction",
-      textType: "plain",
-    },
     headers: {
       "content-type": "application/json",
       "x-rapidapi-host": process.env.NEXT_PUBLIC_TRANSLATOR_HOST,
       "x-rapidapi-key": process.env.NEXT_PUBLIC_APIKEY,
     },
-    data: [
-      {
-        Text: value,
-      },
-    ],
+    data: `{"text":"${value}","source":"${fromLanguage.code}","target":"${toLanguage.code}"}`,
   };
 
   const { data, error, isFetching, isLoading } = useQuery(
     ["translate", value, fromLanguage, toLanguage],
     async () => {
-      // @ts-ignore
-      axios(options).then((res) =>
-        setTranslatedText(res.data[0].translations[0].text)
-      );
+      axios(options).then((res) => {
+        setTranslatedText(res.data.translations.translation);
+
+        console.log(res.data, "tewxt");
+      });
     }
   );
 

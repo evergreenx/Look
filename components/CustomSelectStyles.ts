@@ -1,6 +1,7 @@
 import React from "react";
+import { StylesConfig } from "react-select";
 
-export const CustomSelectStyles = {
+export const CustomSelectStyles: StylesConfig = {
   container: (provided) => ({
     ...provided,
 
@@ -44,7 +45,7 @@ export const CustomSelectStyles = {
     color: "#037ACF",
     fontWeight: 500,
   }),
-  IndicatorsContainer: (provided, state) => ({
+  IndicatorsContainer: (provided) => ({
     ...provided,
     display: "none",
   }),

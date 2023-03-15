@@ -6,15 +6,16 @@ import { HiSwitchHorizontal } from "react-icons/hi";
 import Select from "react-select";
 import TextArea from "../components/TextArea";
 import { CustomSelectStyles } from "../components/CustomSelectStyles";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   const [fromLanguage, setFromLanguage] = useState({
     name: "English",
     code: "en",
   });
-  const [toLanguage, setToLanguage] = useState([
+  const [toLanguage, setToLanguage] = useState(
     { name: "French", code: "fr" },
-  ]);
+  );
 
   return (
     <div className="flex flex-col  justify-center items-center px-5  ">
@@ -78,6 +79,9 @@ const Home: NextPage = () => {
       </div>
 
       <TextArea toLanguage={toLanguage} fromLanguage={fromLanguage} />
+
+
+      <Footer />
     </div>
   );
 };
